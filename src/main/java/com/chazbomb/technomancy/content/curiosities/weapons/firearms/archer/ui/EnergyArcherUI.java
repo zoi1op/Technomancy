@@ -43,11 +43,7 @@ public class EnergyArcherUI {
         displayedSpeed.chase(displayedThrottle.getValue()*charge, .03f, LerpedFloat.Chaser.LINEAR);
         displayedSpeed.tickChaser();
 
-        if(displayedSpeed.getValue()>=displayedThrottle.getValue()){
-            charged=true;
-        } else {
-            charged=false;
-        }
+        charged= displayedSpeed.getValue() >= displayedThrottle.getValue();
 
 
     }
@@ -72,7 +68,7 @@ public class EnergyArcherUI {
 
 
         poseStack.pushPose();
-        poseStack.translate(width / 2 - 91, height - 29, 0);
+        poseStack.translate((double) width / 2 - 91, height - 29, 0);
 
         // Speed, Throttle
 

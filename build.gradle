@@ -56,7 +56,6 @@ minecraft {
     runs {
         client {
             workingDirectory project.file('run')
-//            arg "-mixin.config=createcommodities.mixins.json"
             arg "-mixin.config=technomancy.mixins.json"
             property 'forge.logging.markers', 'REGISTRIES'
             property 'forge.logging.console.level', 'debug'
@@ -116,14 +115,22 @@ repositories {
     maven { // mixins
         url = 'https://repo.spongepowered.org/repository/maven-public/'
     }
-    maven { // JEI 1
-        name = "Progwml6 maven"
-        url = "https://dvs1.progwml6.com/files/maven/"
+    maven { // jei
+        url = "https://maven.blamejared.com/"
+        content {
+            includeGroup("mezz.jei")
+        }
     }
-    maven { // JEI 2
-        name = "ModMaven"
-        url = "https://modmaven.k-4u.nl"
+
+    maven {
+        url = "https://maven.tterrag.com/"
+        content {
+            includeGroup("com.simibubi.create")
+            includeGroup("com.jozufozu.flywheel")
+            includeGroup("com.tterrag.registrate")
+        }
     }
+
     maven { // Registrate
         name = "tterrag maven"
         url = "https://maven.tterrag.com/"
@@ -151,26 +158,19 @@ processResources {
 dependencies {
     minecraft "net.minecraftforge:forge:${mc_version}-${forge_version}"
 
-//    def registrate = "com.tterrag.registrate:Registrate:${registrate_version}"
-//    implementation fg.deobf(registrate)
-//    shade registrate
+    compileOnly("com.tterrag.registrate:Registrate:${registrate_version}")
 
-    compileOnly fg.deobf("com.tterrag.registrate:Registrate:${registrate_version}")
+    implementation("com.simibubi.create:create-${mc_version}:${create_version}:all") { transitive = false }
+    implementation("com.jozufozu.flywheel:flywheel-forge-${mc_version}:${flywheel_version}")
 
-    implementation fg.deobf("com.simibubi.create:create-${mc_version}:${create_version}:all") { transitive = false }
-    implementation fg.deobf("com.jozufozu.flywheel:flywheel-forge-${mc_version}:${flywheel_version}")
-
-    //implementation fg.deobf("curse.maven:craftadditions-439890:4605624") //why tf is CC&A here
-
-    //implementation fg.deobf("curse.maven:spark-361579:3824951")
+    compileOnly("mezz.jei:jei-${mc_version}-common-api:${jei_version}")
+    compileOnly("mezz.jei:jei-${mc_version}-forge-api:${jei_version}")
+    runtimeOnly("mezz.jei:jei-${mc_version}-forge:${jei_version}")
 
     //dev qol
     runtimeOnly(fg.deobf("curse.maven:better-mods-button-541584:4608772"))
     runtimeOnly(fg.deobf("curse.maven:ferritecore-429235:4074294"))
     runtimeOnly(fg.deobf("curse.maven:catalogue-459701:3803098"))
-
-    compileOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}:api") // Adds JEI API as a compile dependency
-    runtimeOnly fg.deobf("mezz.jei:jei-${mc_version}:${jei_version}") // Adds the full JEI mod as a runtime dependency
 
     annotationProcessor 'org.spongepowered:mixin:0.8:processor'
 }
@@ -182,7 +182,7 @@ jar {
                 "Specification-Vendor"    : "CHAZBOMB1",
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,
-                "Implementation-Version"  : version,
+                "Implementation-Version"  : project.version,
                 "Implementation-Vendor"   : "CHAZBOMB1",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
@@ -190,7 +190,6 @@ jar {
 }
 
 shadowJar {
-    classifier = ''
     configurations = [project.configurations.shade]
     relocate 'com.tterrag.registrate', "${group}.repack.registrate"
 }
@@ -220,4 +219,4 @@ artifacts {
 machete {
     enabled = ci
 }
-tasks.withType(Copy).all { duplicatesStrategy 'exclude' }
+tasks.withType(Copy).configureEach { duplicatesStrategy 'exclude' }
