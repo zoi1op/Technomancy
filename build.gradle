@@ -177,11 +177,11 @@ jar {
     manifest {
         attributes([
                 "Specification-Title"     : archivesBaseName,
-                "Specification-Vendor"    : "CHAZBOMB1",
+                "Specification-Vendor"    : "zoiop",
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : version,
-                "Implementation-Vendor"   : "CHAZBOMB1",
+                "Implementation-Vendor"   : "zoiop",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
