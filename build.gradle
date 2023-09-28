@@ -122,12 +122,11 @@ repositories {
         }
     }
 
-    maven {
+b    maven { // create
         url = "https://maven.tterrag.com/"
         content {
             includeGroup("com.simibubi.create")
             includeGroup("com.jozufozu.flywheel")
-            includeGroup("com.tterrag.registrate")
         }
     }
 
