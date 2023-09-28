@@ -181,7 +181,7 @@ jar {
                 "Specification-Vendor"    : "CHAZBOMB1",
                 "Specification-Version"   : "1",
                 "Implementation-Title"    : project.name,
-                "Implementation-Version"  : project.version,
+                "Implementation-Version"  : version,
                 "Implementation-Vendor"   : "CHAZBOMB1",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
@@ -218,4 +218,4 @@ artifacts {
 machete {
     enabled = ci
 }
-tasks.withType(Copy).configureEach { duplicatesStrategy 'exclude' }
+tasks.withType(Copy).all { duplicatesStrategy 'exclude' }
