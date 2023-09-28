@@ -122,7 +122,7 @@ repositories {
         }
     }
 
-b    maven { // create
+    maven { // create
         url = "https://maven.tterrag.com/"
         content {
             includeGroup("com.simibubi.create")
