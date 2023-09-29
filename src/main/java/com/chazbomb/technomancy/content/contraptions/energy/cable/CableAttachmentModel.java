@@ -11,8 +11,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraftforge.client.model.data.IModelData;
-import net.minecraftforge.client.model.data.ModelDataMap;
+import net.minecraftforge.client.model.data.ModelData ;
 import net.minecraftforge.client.model.data.ModelProperty;
 import org.jetbrains.annotations.NotNull;
 
@@ -30,8 +29,9 @@ public class CableAttachmentModel extends BakedModelWrapperWithData {
     }
 
     @Override
-    protected void gatherModelData(ModelDataMap.Builder builder, BlockAndTintGetter world, BlockPos pos, BlockState state, IModelData blockEntityData) {
+    protected ModelData.Builder gatherModelData(ModelData.Builder builder, BlockAndTintGetter world, BlockPos pos, BlockState state, ModelData blockEntityData) {
         //nothing :)
+        return builder;
     }
 
     /**
@@ -61,8 +61,8 @@ public class CableAttachmentModel extends BakedModelWrapperWithData {
     }
  */
 
-    @Override
-    public @NotNull List<BakedQuad> getQuads(BlockState state, Direction side, @NotNull Random rand, @NotNull IModelData data) {
+
+    public @NotNull List<BakedQuad> getQuads(BlockState state, Direction side, @NotNull Random rand, @NotNull ModelData data) {
         List<BakedQuad> quads = super.getQuads(state, side, rand, data);
         if (data.hasProperty(CABLE_PROPERTY)) {
             CableAttachmentModel.CableModelData cableData = data.getData(CABLE_PROPERTY);
@@ -72,7 +72,7 @@ public class CableAttachmentModel extends BakedModelWrapperWithData {
         return quads;
     }
 
-    private void addQuads(List<BakedQuad> quads, BlockState state, Direction side, Random rand, IModelData data, CableAttachmentModel.CableModelData cableData) {
+    private void addQuads(List<BakedQuad> quads, BlockState state, Direction side, Random rand, ModelData data, CableAttachmentModel.CableModelData cableData) {
         BakedModel bracket = cableData.getBracket();
         if (bracket != null)
             quads.addAll(bracket.getQuads(state, side, rand, data));

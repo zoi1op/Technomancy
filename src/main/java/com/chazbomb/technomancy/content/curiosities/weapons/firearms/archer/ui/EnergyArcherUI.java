@@ -8,11 +8,11 @@ import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.level.GameType;
-import net.minecraftforge.client.gui.ForgeIngameGui;
-import net.minecraftforge.client.gui.IIngameOverlay;
+import net.minecraftforge.client.gui.overlay.ForgeGui;
+import net.minecraftforge.client.gui.overlay.IGuiOverlay ;
 
 public class EnergyArcherUI {
-    public static final IIngameOverlay OVERLAY = EnergyArcherUI::renderOverlay;
+    public static final IGuiOverlay OVERLAY = EnergyArcherUI::renderOverlay;
 
 
     public static LerpedFloat displayedSpeed = LerpedFloat.linear();
@@ -50,7 +50,7 @@ public class EnergyArcherUI {
 
 
 
-    public static void renderOverlay(ForgeIngameGui gui, PoseStack poseStack, float partialTicks, int width,
+    public static void renderOverlay(ForgeGui gui, PoseStack poseStack, float partialTicks, int width,
                                      int height) {
 
         if(!toRender)

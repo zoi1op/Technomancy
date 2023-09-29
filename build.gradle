@@ -106,7 +106,7 @@ sourceSets.main.resources { srcDir 'src/generated/resources' }
 
 repositories {
     maven {
-        name "Cursemaven"
+        name "Cursemaven" // Cursemaven
         url "https://cursemaven.com"
         content {
             includeGroup "curse.maven"
@@ -122,7 +122,7 @@ repositories {
         }
     }
 
-    maven {
+    maven { // create and maven registrate
         url = "https://maven.tterrag.com/"
         content {
             includeGroup("com.simibubi.create")
@@ -130,12 +130,6 @@ repositories {
             includeGroup("com.tterrag.registrate")
         }
     }
-
-    maven { // Registrate
-        name = "tterrag maven"
-        url = "https://maven.tterrag.com/"
-    }
-}
 
 configurations {
     shade

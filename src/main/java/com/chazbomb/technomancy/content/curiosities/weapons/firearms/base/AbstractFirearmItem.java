@@ -196,7 +196,7 @@ public abstract class AbstractFirearmItem extends Item {
 	
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void initializeClient(Consumer<IItemRenderProperties> consumer) {
+	public void initializeClient(Consumer<ItemRender> consumer) {
 		consumer.accept(SimpleCustomRenderer.create(this, this.getRenderer()));
 	}
 
