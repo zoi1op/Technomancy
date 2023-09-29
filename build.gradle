@@ -112,6 +112,8 @@ repositories {
             includeGroup "curse.maven"
         }
     }
+}
+
     maven { // mixins
         url = 'https://repo.spongepowered.org/repository/maven-public/'
     }
