@@ -112,7 +112,7 @@ repositories {
             includeGroup "curse.maven"
         }
     }
-}
+
 
     maven { // mixins
         url = 'https://repo.spongepowered.org/repository/maven-public/'
@@ -132,6 +132,7 @@ repositories {
             includeGroup("com.tterrag.registrate")
         }
     }
+}
 
 configurations {
     shade

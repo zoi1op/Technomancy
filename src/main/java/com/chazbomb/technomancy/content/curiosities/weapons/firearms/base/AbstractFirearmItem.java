@@ -19,7 +19,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.IItemRenderProperties;
+import net.minecraftforge.client.extensions.common.IClientItemExtensions ;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.function.Consumer;
@@ -196,7 +196,7 @@ public abstract class AbstractFirearmItem extends Item {
 	
 	@Override
 	@OnlyIn(Dist.CLIENT)
-	public void initializeClient(Consumer<ItemRender> consumer) {
+	public void initializeClient(Consumer<IClientItemExtensions> consumer) {
 		consumer.accept(SimpleCustomRenderer.create(this, this.getRenderer()));
 	}
 
