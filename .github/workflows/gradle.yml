@@ -52,14 +52,14 @@ jobs:
           arguments: build
 
       - name: Send building message to discord
-        if: github.event_name == 'push' && github.repository_id == '497754645'
+        if: github.event_name == 'push' && github.repository_id == '696161740'
         uses: realRobotix/action-discord-notifier@release-master
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           message-title: Building mod from branch ${{ steps.get_branch.outputs.branch }}
 
       - name: Send built file to discord
-        if: github.event_name == 'push' && github.repository_id == '497754645'
+        if: github.event_name == 'push' && github.repository_id == '696161740'
         uses: sinshutu/upload-to-discord@master
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
