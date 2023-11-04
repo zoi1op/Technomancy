@@ -40,7 +40,7 @@ public void onMouseHold(InputEvent.MouseInputEvent event) {
 
 
 	@SubscribeEvent(priority = EventPriority.LOWEST)
-	public void onMouseClick(InputEvent.ClickInputEvent event) {
+	public void onMouseClick(InputEvent.MouseButton event) {
 		if (event.isCanceled())
 			return;
 

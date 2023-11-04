@@ -5,7 +5,6 @@ import com.chazbomb.technomancy.foundation.energy.IAetherStorage;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraftforge.common.capabilities.RegisterCapabilitiesEvent;
 import net.minecraftforge.event.AttachCapabilitiesEvent;
-import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
@@ -24,10 +23,7 @@ public class CommonEvents {
 //        QuantumHandler.attach(event);
     }
 
-    @SubscribeEvent
-    public static void onWorldTick(TickEvent.WorldTickEvent event){
 
-    }
     
     @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
     public static class ModBusEvents {

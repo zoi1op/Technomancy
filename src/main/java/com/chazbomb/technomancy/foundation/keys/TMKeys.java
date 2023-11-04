@@ -5,7 +5,7 @@ import com.mojang.blaze3d.platform.InputConstants;
 import net.minecraft.client.KeyMapping;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
-import net.minecraftforge.client.ClientRegistry;
+import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
 
 @OnlyIn(Dist.CLIENT)
 public class TMKeys {
@@ -13,6 +13,6 @@ public class TMKeys {
 
     public static void register() {
         Technomancy.LOGGER.info("Registering keys!");
-        ClientRegistry.registerKeyBinding(reload);
+        RegisterKeyMappingsEvent.registerKeyBinding(reload);
     }
 }

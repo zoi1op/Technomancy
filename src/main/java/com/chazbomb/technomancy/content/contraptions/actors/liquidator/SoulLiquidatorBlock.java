@@ -5,7 +5,7 @@ import com.simibubi.create.foundation.block.IBE;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
-public class SoulLiquidatorBlock extends Block implements IBE<SoulLiquidatorBlockEntity> {
+public abstract class SoulLiquidatorBlock extends Block implements IBE<SoulLiquidatorBlockEntity> { // I have no doubt about the work
 
 	public SoulLiquidatorBlock(Properties props) {
 		super(props);

@@ -4,8 +4,8 @@ import com.chazbomb.technomancy.content.curiosities.weapons.firearms.archer.ui.E
 import com.chazbomb.technomancy.content.curiosities.weapons.firearms.base.FirearmInteractionHandler;
 import com.chazbomb.technomancy.content.curiosities.weapons.firearms.base.FirearmRenderHandler;
 import com.chazbomb.technomancy.foundation.keys.TMKeys;
-import net.minecraftforge.client.gui.ForgeIngameGui;
-import net.minecraftforge.client.gui.OverlayRegistry;
+import net.minecraftforge.client.gui.overlay.ForgeGui;
+import net.minecraftforge.client.gui.overlay.GuiOverlayManager;
 import net.minecraftforge.eventbus.api.IEventBus;
 
 public class TechnomancyClient {
@@ -21,7 +21,7 @@ public class TechnomancyClient {
 	private static void registerOverlays() {
 		// Register overlays in reverse order
 
-		OverlayRegistry.registerOverlayAbove(ForgeIngameGui.EXPERIENCE_BAR_ELEMENT, "Test Energy Archer UI", EnergyArcherUI.OVERLAY);
+		OverlayRegistry.registerOverlayAbove(ForgeGui.EXPERIENCE_BAR_ELEMENT, "Test Energy Archer UI", EnergyArcherUI.OVERLAY);
 	}
 
 }

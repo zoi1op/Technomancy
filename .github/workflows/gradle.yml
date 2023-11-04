@@ -5,8 +5,8 @@
 # This workflow will build a Java project with Gradle and cache/restore any dependencies to improve the workflow execution time
 # For more information see: https://help.github.com/actions/language-and-framework-guides/building-and-testing-java-with-gradle
 
-name: AutoBuild
 
+name: AutoBuild
 on:
   workflow_dispatch:
   push:
@@ -52,14 +52,14 @@ jobs:
           arguments: build
 
       - name: Send building message to discord
-        if: github.event_name == 'push' && github.repository_id == '497754645'
+        if: github.event_name == 'push' && github.repository_id == '696161740'
         uses: realRobotix/action-discord-notifier@release-master
         with:
           webhook: ${{ secrets.DISCORD_WEBHOOK }}
           message-title: Building mod from branch ${{ steps.get_branch.outputs.branch }}
 
       - name: Send built file to discord
-        if: github.event_name == 'push' && github.repository_id == '497754645'
+        if: github.event_name == 'push' && github.repository_id == '696161740'
         uses: sinshutu/upload-to-discord@master
         env:
           DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}
@@ -69,5 +69,5 @@ jobs:
       - name: Archive Artifacts
         uses: actions/upload-artifact@v3
         with:
-          name: technomancy-${{ steps.get_mc_version.outputs.mc_version }}-nightly-${{ steps.get_hash.outputs.sha_short }}
+          name: technomancy-${{ steps.get_mc_version.outputs.mc_version }}-alpha-${{ steps.get_hash.outputs.sha_short }}
           path: build/libs/

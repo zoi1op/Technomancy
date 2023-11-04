@@ -20,7 +20,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.IForgeRegistry;
-import net.minecraftforge.registries.IForgeRegistryEntry;
 
 import java.util.Collections;
 import java.util.Objects;
@@ -31,13 +30,13 @@ public class TMTags {
     private static final CreateRegistrate REGISTRATE = Technomancy.REGISTRATE
             .creativeModeTab(() -> TMItemGroups.MAIN_GROUP);
 
-    public static <T extends IForgeRegistryEntry<T>> TagKey<T> optionalTag(IForgeRegistry<T> registry,
+    public static <T extends IForgeRegistry<T>> TagKey<T> optionalTag(IForgeRegistry<T> registry,
                                                                            ResourceLocation id) {
         return Objects.requireNonNull(registry.tags())
                 .createOptionalTagKey(id, Collections.emptySet());
     }
 
-    public static <T extends IForgeRegistryEntry<T>> TagKey<T> forgeTag(IForgeRegistry<T> registry, String path) {
+    public static <T extends IForgeRegistry<T>> TagKey<T> forgeTag(IForgeRegistry<T> registry, String path) {
         return optionalTag(registry, new ResourceLocation("forge", path));
     }
 

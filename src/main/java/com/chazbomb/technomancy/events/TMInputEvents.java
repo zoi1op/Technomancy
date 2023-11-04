@@ -11,7 +11,7 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(Dist.CLIENT)
 public class TMInputEvents {
     @SubscribeEvent
-    public static void onMouseScrolled(InputEvent.MouseScrollEvent event) {
+    public static void onMouseScrolled(InputEvent.MouseScrollingEvent event) {
         if (Minecraft.getInstance().screen != null)
             return;
 
